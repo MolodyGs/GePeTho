@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a48fba74c1bf2eb4589bd5f67b72b187
+guid: 555e60b756e0af7478eae47e5c47740a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gepetho_anim_walk_v01_0
+      name: gepetho_anim_jump_v01_0
       rect:
         serializedVersion: 2
         x: 0
@@ -150,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7ef6c7ac8e1f5a45850167e66e9a800
-      internalID: 1160618392
+      spriteID: 53880ab9c445247438d4a09406ab92f6
+      internalID: -1177851918
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gepetho_anim_walk_v01_1
+      name: gepetho_anim_jump_v01_1
       rect:
         serializedVersion: 2
         x: 28
@@ -171,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0bff125341db1b4b968b10dfc4cb7f0
-      internalID: -971938092
+      spriteID: bc109798d6eabfb42b2f6cd6a93de99a
+      internalID: -1305190542
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gepetho_anim_walk_v01_2
+      name: gepetho_anim_jump_v01_2
       rect:
         serializedVersion: 2
         x: 56
@@ -192,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36ba9b59741d1a940bd4d403cce44150
-      internalID: 1328298620
+      spriteID: 02dac32568e3480409b167612c62b191
+      internalID: -897887580
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gepetho_anim_walk_v01_3
+      name: gepetho_anim_jump_v01_3
       rect:
         serializedVersion: 2
         x: 84
@@ -213,8 +213,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5710667ce80de54f94c23886ae43d47
-      internalID: -1694535984
+      spriteID: 072889ee75e714f4a9a660b2f6cf444a
+      internalID: 1682725570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gepetho_anim_jump_v01_4
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 28
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18317caae29388a4d81b084aa5678093
+      internalID: -2060903400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gepetho_anim_jump_v01_5
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 0
+        width: 28
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8d02f61f35eb014ca7cd275e83eb43d
+      internalID: 1880143214
       vertices: []
       indices: 
       edges: []
@@ -230,10 +272,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      gepetho_anim_walk_v01_0: 1160618392
-      gepetho_anim_walk_v01_1: -971938092
-      gepetho_anim_walk_v01_2: 1328298620
-      gepetho_anim_walk_v01_3: -1694535984
+      gepetho_anim_jump_v01_0: -1177851918
+      gepetho_anim_jump_v01_1: -1305190542
+      gepetho_anim_jump_v01_2: -897887580
+      gepetho_anim_jump_v01_3: 1682725570
+      gepetho_anim_jump_v01_4: -2060903400
+      gepetho_anim_jump_v01_5: 1880143214
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
