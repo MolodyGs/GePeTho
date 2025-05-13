@@ -13,17 +13,17 @@ public class MainController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerReference = GameObject.Find("gepetho_reference");
-        playerReference.SetActive(false);
-        playerShadow = GameObject.Find("gepetho_shadow");
-        playerShadowAnimator = playerShadow.GetComponent<Animator>();
+        // playerReference = GameObject.Find("gepetho_reference");
+        // playerReference.SetActive(false);
+        // playerShadow = GameObject.Find("gepetho_shadow");
+        // playerShadowAnimator = playerShadow.GetComponent<Animator>();
 
         if (openScenesAdditive)
         {
             SceneManager.LoadScene("intro_scen_design", LoadSceneMode.Additive);
             SceneManager.LoadScene("intro_scen_art", LoadSceneMode.Additive);
         }
-        StartCoroutine(WakingUpAnimation());
+        // StartCoroutine(WakingUpAnimation());
     }
 
     IEnumerator WakingUpAnimation()
