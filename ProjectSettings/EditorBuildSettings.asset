@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneIntroduction/intro_scen_art.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/SceneIntroduction/intro_scen_sound.unity
+    guid: 961793f77fa4d8740a22e9beea4f25f2
   m_configObjects: {}

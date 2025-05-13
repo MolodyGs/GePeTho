@@ -9,6 +9,7 @@ public class MainController : MonoBehaviour
     public GameObject playerShadow;
     public GameObject playerReference;
     Animator playerShadowAnimator;
+    public string lastSceneId = "scen_intro";
 
     // Start is called before the first frame update
     void Start()
@@ -20,10 +21,35 @@ public class MainController : MonoBehaviour
 
         if (openScenesAdditive)
         {
-            SceneManager.LoadScene("intro_scen_design", LoadSceneMode.Additive);
-            SceneManager.LoadScene("intro_scen_art", LoadSceneMode.Additive);
+            SceneManager.LoadScene(lastSceneId + "_design", LoadSceneMode.Additive);
+            SceneManager.LoadScene(lastSceneId + "_art", LoadSceneMode.Additive);
         }
         // StartCoroutine(WakingUpAnimation());
+    }
+
+    public void OpenScene(string sceneId)
+    {
+        if (openScenesAdditive)
+        {
+            CloseScenes();
+            SceneManager.LoadScene(sceneId, LoadSceneMode.Additive);
+            SceneManager.LoadScene(sceneId + "_design", LoadSceneMode.Additive);
+            // SceneManager.LoadScene(sceneId + "_design", LoadSceneMode.Additive);
+        }
+        else
+        {
+            SceneManager.LoadScene(sceneId);
+        }
+        lastSceneId = sceneId;
+    }
+
+    public void CloseScenes()
+    {
+        if (openScenesAdditive)
+        {
+            SceneManager.UnloadSceneAsync(lastSceneId + "_design");
+            SceneManager.UnloadSceneAsync(lastSceneId + "_art");
+        }
     }
 
     IEnumerator WakingUpAnimation()
@@ -39,6 +65,6 @@ public class MainController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
