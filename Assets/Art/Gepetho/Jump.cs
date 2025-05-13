@@ -9,12 +9,14 @@ public class Jump : MonoBehaviour
   public float fallMultiplier = 2.5f;
 
   private Rigidbody2D rb;
-  private bool isGrounded = false;
+  private bool isGrounded = true;
   bool gravityModified = false;
   bool jump = false;
   bool falling = false;
   private float originalGravityScale;
   Animator animator;
+  float lastVelocityY;
+  float currentVelocityY;
 
   void Start()
   {
@@ -34,6 +36,7 @@ public class Jump : MonoBehaviour
       jump = true;
       animator.SetBool("grounded", false);
       animator.SetBool("jump", true);
+      Debug.Log("Jumping");
     }
 
     // if (!Input.GetKey(KeyCode.Space) && !isGrounded)
@@ -53,13 +56,27 @@ public class Jump : MonoBehaviour
       jump = false;
     }
 
-    if (rb.velocity.y <= 0)
+    currentVelocityY = rb.velocity.y;
+
+    if (lastVelocityY > 0 && currentVelocityY <= 0)
     {
-      if (!isGrounded)
+      if (!falling)
       {
         falling = true;
+        isGrounded = false;
         animator.SetBool("falling", true);
+        animator.SetBool("grounded", false);
+        Debug.Log("Falling");
       }
+    }
+    else if (currentVelocityY == 0)
+    {
+      falling = false;
+      isGrounded = true;
+      animator.SetBool("falling", false);
+      animator.SetBool("jump", false);
+      animator.SetBool("grounded", true);
+      Debug.Log("Grounded");
     }
 
     if (!isGrounded && !Input.GetKey(KeyCode.Space) && !gravityModified)
@@ -74,15 +91,17 @@ public class Jump : MonoBehaviour
       rb.gravityScale = originalGravityScale;
 
     }
+
+    lastVelocityY = currentVelocityY;
   }
 
   private void OnCollisionEnter2D(Collision2D collision)
   {
-    isGrounded = true;
-    falling = false;
-    animator.SetBool("grounded", true);
-    animator.SetBool("falling", false);
-    animator.SetBool("jump", false);
+    // isGrounded = true;
+    // falling = false;
+    // animator.SetBool("grounded", true);
+    // animator.SetBool("falling", false);
+    // animator.SetBool("jump", false);
   }
 
   bool OnAir()
