@@ -9,7 +9,7 @@ public class MainController : MonoBehaviour
     public GameObject playerShadow;
     public GameObject playerReference;
     Animator playerShadowAnimator;
-    public string lastSceneId = "scen_intro";
+    public string lastSceneId;
 
     // Start is called before the first frame update
     void Start()
