@@ -328,6 +328,7 @@ MonoBehaviour:
   openScenesAdditive: 0
   playerShadow: {fileID: 0}
   playerReference: {fileID: 0}
+  lastSceneId: scen_intro
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
