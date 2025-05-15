@@ -31,18 +31,12 @@ public class Jump : MonoBehaviour
 
     if (Input.GetKeyDown(KeyCode.Space) && !OnAir())
     {
-      // rb.velocity = new Vector2(rb.velocity.x, jumpForce);
       isGrounded = false;
       jump = true;
       animator.SetBool("grounded", false);
       animator.SetBool("jump", true);
       Debug.Log("Jumping");
     }
-
-    // if (!Input.GetKey(KeyCode.Space) && !isGrounded)
-    // {
-    //   rb.velocity += 10 * Physics2D.gravity.y * Time.deltaTime * Vector2.up;
-    // }
   }
 
   void FixedUpdate()
@@ -66,7 +60,7 @@ public class Jump : MonoBehaviour
         isGrounded = false;
         animator.SetBool("falling", true);
         animator.SetBool("grounded", false);
-        Debug.Log("Falling");
+        // Debug.Log("Falling");
       }
     }
     else if (currentVelocityY == 0)
@@ -76,7 +70,7 @@ public class Jump : MonoBehaviour
       animator.SetBool("falling", false);
       animator.SetBool("jump", false);
       animator.SetBool("grounded", true);
-      Debug.Log("Grounded");
+      // Debug.Log("Grounded");
     }
 
     if (!isGrounded && !Input.GetKey(KeyCode.Space) && !gravityModified)
@@ -93,15 +87,6 @@ public class Jump : MonoBehaviour
     }
 
     lastVelocityY = currentVelocityY;
-  }
-
-  private void OnCollisionEnter2D(Collision2D collision)
-  {
-    // isGrounded = true;
-    // falling = false;
-    // animator.SetBool("grounded", true);
-    // animator.SetBool("falling", false);
-    // animator.SetBool("jump", false);
   }
 
   bool OnAir()

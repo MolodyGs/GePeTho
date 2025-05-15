@@ -23,6 +23,8 @@ public class MainController : MonoBehaviour
         {
             SceneManager.LoadScene(lastSceneId + "_design", LoadSceneMode.Additive);
             SceneManager.LoadScene(lastSceneId + "_art", LoadSceneMode.Additive);
+            SceneManager.LoadScene("scen_mainMenu", LoadSceneMode.Additive);
+            SceneManager.LoadScene("scen_mainSound", LoadSceneMode.Additive);
         }
         // StartCoroutine(WakingUpAnimation());
     }

@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: idle
+    m_Hash: 472167701
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: gepetho_anim_idle_v01_0
+      m_Hash: 723444868
+      m_Sprite: {fileID: 1571920338, guid: 67d4168872db2d94ab36aee5bd32bb75, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1571920338, guid: 67d4168872db2d94ab36aee5bd32bb75, type: 3}
+    - m_Name: gepetho_anim_idle_v01_1
+      m_Hash: 471454738
+      m_Sprite: {fileID: 2008737701, guid: 67d4168872db2d94ab36aee5bd32bb75, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2008737701, guid: 67d4168872db2d94ab36aee5bd32bb75, type: 3}
+    - m_Name: gepetho_anim_idle_v01_2
+      m_Hash: 84968872
+      m_Sprite: {fileID: 194968001, guid: 67d4168872db2d94ab36aee5bd32bb75, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 194968001, guid: 67d4168872db2d94ab36aee5bd32bb75, type: 3}
+    - m_Name: gepetho_anim_idle_v01_3
+      m_Hash: 840414526
+      m_Sprite: {fileID: -1034548272, guid: 67d4168872db2d94ab36aee5bd32bb75, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1034548272, guid: 67d4168872db2d94ab36aee5bd32bb75, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: walking
+    m_Hash: 675300631
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: gepetho_anim_walk_v1_0
+      m_Hash: 786525683
+      m_Sprite: {fileID: -98236705, guid: 5a6f3b613f757b1449a98f198ab48f2a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -98236705, guid: 5a6f3b613f757b1449a98f198ab48f2a, type: 3}
+    - m_Name: gepetho_anim_walk_v1_1
+      m_Hash: 434527589
+      m_Sprite: {fileID: -1343621971, guid: 5a6f3b613f757b1449a98f198ab48f2a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1343621971, guid: 5a6f3b613f757b1449a98f198ab48f2a, type: 3}
+    - m_Name: gepetho_anim_walk_v1_2
+      m_Hash: 15666399
+      m_Sprite: {fileID: 725852271, guid: 5a6f3b613f757b1449a98f198ab48f2a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 725852271, guid: 5a6f3b613f757b1449a98f198ab48f2a, type: 3}
+    - m_Name: gepetho_anim_walk_v1_3
+      m_Hash: 937966665
+      m_Sprite: {fileID: -767433883, guid: 5a6f3b613f757b1449a98f198ab48f2a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -767433883, guid: 5a6f3b613f757b1449a98f198ab48f2a, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 638827739272138229
+  m_Version: 1
