@@ -86,6 +86,14 @@ public class Jump : MonoBehaviour
 
     }
 
+    if (currentVelocityY < 0)
+    {
+      animator.SetBool("falling", true);
+      animator.SetBool("jump", true);
+      animator.SetBool("grounded", false);
+    }
+
+
     lastVelocityY = currentVelocityY;
   }
 
