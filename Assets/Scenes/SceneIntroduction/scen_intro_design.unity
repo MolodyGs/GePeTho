@@ -1003,12 +1003,12 @@ GameObject:
   - component: {fileID: 385431116}
   - component: {fileID: 385431115}
   m_Layer: 0
-  m_Name: gepetho_shadow
+  m_Name: gepetho_clone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &385431115
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -5,20 +5,11 @@ using UnityEngine;
 public class MainMenuController : MonoBehaviour
 {
     public GameObject canvas;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    public MainMenuSoundController mainMenuSoundController;
 
     public void StartGame()
     {
+        mainMenuSoundController.OnPlay();
         Debug.Log("Start game...");
         canvas.SetActive(false);
         GameObject.Find("MainController").GetComponent<MainController>().StartGame();
@@ -26,6 +17,7 @@ public class MainMenuController : MonoBehaviour
 
     public void ShowCredits()
     {
+        mainMenuSoundController.OnMouseClick();
         Debug.Log("Show credits...");
     }
 }
