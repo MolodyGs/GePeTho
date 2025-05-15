@@ -5,19 +5,20 @@ using UnityEngine.SceneManagement;
 public class MainController : MonoBehaviour
 {
     public bool openScenesAdditive = false;
-
-    public GameObject playerShadow;
+    public GameObject playerClone;
     public GameObject playerReference;
-    Animator playerShadowAnimator;
+    Animator playerCloneAnimator;
     public string lastSceneId;
 
-    // Start is called before the first frame update
     void Start()
     {
-        // playerReference = GameObject.Find("gepetho_reference");
-        // playerReference.SetActive(false);
-        // playerShadow = GameObject.Find("gepetho_shadow");
-        // playerShadowAnimator = playerShadow.GetComponent<Animator>();
+        // Gepetho Reference
+        playerReference = GameObject.Find("gepetho_reference");
+        playerReference.SetActive(false);
+
+        // Gepetho Clone
+        playerClone = GameObject.Find("gepetho_clone");
+        playerCloneAnimator = playerClone.GetComponent<Animator>();
 
         if (openScenesAdditive)
         {
@@ -26,7 +27,6 @@ public class MainController : MonoBehaviour
             SceneManager.LoadScene("scen_mainMenu", LoadSceneMode.Additive);
             SceneManager.LoadScene("scen_mainSound", LoadSceneMode.Additive);
         }
-        // StartCoroutine(WakingUpAnimation());
     }
 
     public void OpenScene(string sceneId)
@@ -36,7 +36,6 @@ public class MainController : MonoBehaviour
             CloseScenes();
             SceneManager.LoadScene(sceneId, LoadSceneMode.Additive);
             SceneManager.LoadScene(sceneId + "_design", LoadSceneMode.Additive);
-            // SceneManager.LoadScene(sceneId + "_design", LoadSceneMode.Additive);
         }
         else
         {
@@ -54,19 +53,18 @@ public class MainController : MonoBehaviour
         }
     }
 
-    IEnumerator WakingUpAnimation()
+    public void StartGame()
     {
-        yield return new WaitForSeconds(5f);
-        playerShadowAnimator.SetBool("isWaking", true);
-        yield return new WaitForSeconds(1.666f);
-        playerReference.SetActive(true);
-        playerShadow.SetActive(false);
-        playerReference.GetComponent<Conditions>().blockMovement = false;
+        StartCoroutine(WakingUpAnimation());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator WakingUpAnimation()
     {
-
+        yield return new WaitForSeconds(2f);
+        playerCloneAnimator.SetBool("isWaking", true);
+        yield return new WaitForSeconds(1.666f);
+        playerReference.SetActive(true);
+        playerClone.SetActive(false);
+        playerReference.GetComponent<Conditions>().blockMovement = false;
     }
 }
