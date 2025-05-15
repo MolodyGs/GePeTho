@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,38 +10,62 @@ public class MainController : MonoBehaviour
     public GameObject playerReference;
     Animator playerCloneAnimator;
     public string lastSceneId;
+    public bool isTheMainMenu;
 
-    void Start()
+    async void Start()
     {
-        // Gepetho Reference
-        playerReference = GameObject.Find("gepetho_reference");
-        playerReference.SetActive(false);
-
-        // Gepetho Clone
-        playerClone = GameObject.Find("gepetho_clone");
-        playerCloneAnimator = playerClone.GetComponent<Animator>();
-
         if (openScenesAdditive)
         {
-            SceneManager.LoadScene(lastSceneId + "_design", LoadSceneMode.Additive);
-            SceneManager.LoadScene(lastSceneId + "_art", LoadSceneMode.Additive);
-            SceneManager.LoadScene("scen_mainMenu", LoadSceneMode.Additive);
-            SceneManager.LoadScene("scen_mainSound", LoadSceneMode.Additive);
+            await CargarEscenaAsync(lastSceneId + "_design");
+            await CargarEscenaAsync(lastSceneId + "_art");
+        }
+
+        if (isTheMainMenu)
+        {
+            // Gepetho Reference
+            playerReference = GameObject.Find("gepetho_reference");
+            playerReference.SetActive(false);
+
+            // Gepetho Clone
+            playerClone = GameObject.Find("gepetho_clone");
+            playerCloneAnimator = playerClone.GetComponent<Animator>();
         }
     }
 
+    private async Task CargarEscenaAsync(string nombre)
+    {
+        AsyncOperation op = SceneManager.LoadSceneAsync(nombre, LoadSceneMode.Additive);
+        while (!op.isDone)
+            await Task.Yield();
+    }
+
+    // private IEnumerator LoadingSceneAsync(string nombre, System.Action callback = null)
+    // {
+    //     Debug.Log("Cargando escena: " + nombre);
+    //     yield return new WaitForSeconds(0.5f);
+    //     {
+    //         AsyncOperation operacion = SceneManager.LoadSceneAsync(nombre, );
+    //         while (!operacion.isDone)
+    //         {
+    //             yield return null;
+    //         }
+    //         Debug.Log("Escena cargada. Continuar aquí.");
+    //     }
+    //     callback?.Invoke();
+    // }
+
     public void OpenScene(string sceneId)
     {
-        if (openScenesAdditive)
-        {
-            CloseScenes();
-            SceneManager.LoadScene(sceneId, LoadSceneMode.Additive);
-            SceneManager.LoadScene(sceneId + "_design", LoadSceneMode.Additive);
-        }
-        else
-        {
-            SceneManager.LoadScene(sceneId);
-        }
+        // if (openScenesAdditive)
+        // {
+        CloseScenes();
+        // SceneManager.LoadScene(sceneId, LoadSceneMode.Additive);
+        SceneManager.LoadScene(sceneId + "_design", LoadSceneMode.Additive);
+        // }
+        // else
+        // {
+        //     SceneManager.LoadScene(sceneId);
+        // }
         lastSceneId = sceneId;
     }
 

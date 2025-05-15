@@ -325,10 +325,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9d0ad1baf8ba34d9d238b407e95751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openScenesAdditive: 0
-  playerShadow: {fileID: 0}
+  openScenesAdditive: 1
+  playerClone: {fileID: 0}
   playerReference: {fileID: 0}
   lastSceneId: scen_intro
+  isTheMainMenu: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
