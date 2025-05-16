@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 275278159310030225}
   - component: {fileID: 4633760215820328198}
   - component: {fileID: 882986767482452256}
+  - component: {fileID: 323896346751101654}
+  - component: {fileID: 3898308053952780066}
   m_Layer: 0
   m_Name: door
   m_TagString: Untagged
@@ -77,12 +79,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1428504650, guid: a6add95a975879945880ca764ba33802, type: 3}
+  m_Sprite: {fileID: 1765077139, guid: 6cbf7a8d2e9cca94db6208ad4d46dae6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 47, y: 65}
+  m_Size: {x: 48, y: 64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -124,8 +126,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
-    oldSize: {x: 47, y: 65}
-    newSize: {x: 47, y: 65}
+    oldSize: {x: 48, y: 64}
+    newSize: {x: 48, y: 64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -204,8 +206,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
-    oldSize: {x: 47, y: 65}
-    newSize: {x: 47, y: 65}
+    oldSize: {x: 48, y: 64}
+    newSize: {x: 48, y: 64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -213,3 +215,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 38.129105, y: 60.450817}
   m_EdgeRadius: 0
+--- !u!114 &323896346751101654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5600740780605657605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: 0
+  m_labelHash: 0
+  m_SpriteKey: 0
+  m_SpriteHash: 86581293
+--- !u!114 &3898308053952780066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5600740780605657605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 26596510805018d40bdf1022ef152f90, type: 3}
