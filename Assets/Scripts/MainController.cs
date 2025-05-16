@@ -74,7 +74,28 @@ public class MainController : MonoBehaviour
   {
     AsyncOperation op = SceneManager.LoadSceneAsync(nombre, LoadSceneMode.Additive);
     while (!op.isDone)
+    {
+      Debug.Log("Loading scene " + nombre + " " + op.progress);
       await Task.Yield();
+    }
+    Debug.Log("Scene " + nombre + " loaded");
+  }
+
+  private async Task CloseScene(string nombre)
+  {
+    AsyncOperation op = SceneManager.UnloadSceneAsync(nombre);
+    while (!op.isDone)
+    {
+      Debug.Log("Closing scene " + nombre + " " + op.progress);
+      await Task.Yield();
+    }
+    Debug.Log("Scene " + nombre + " closed");
+  }
+
+  private async void CloseScenes(string scene)
+  {
+    await CloseScene(scene + "_design");
+    await CloseScene(scene + "_art");
   }
 
   public async void OpenScene(string sceneId)
@@ -95,18 +116,14 @@ public class MainController : MonoBehaviour
       mainCameraBlackBackgroundAnimator.SetBool("fade", false);
 
       // closing current scenes
-      CloseScenes();
+      CloseScenes(lastSceneId);
+
+      // get door reference
+      door = GameObject.Find("door");
 
       // get the scene reference
       lastSceneId = sceneId;
     }));
-  }
-
-  public void CloseScenes()
-  {
-    Debug.Log("Cerrando escena: " + lastSceneId);
-    SceneManager.UnloadSceneAsync(lastSceneId + "_design");
-    SceneManager.UnloadSceneAsync(lastSceneId + "_art");
   }
 
   public void StartGame()
@@ -158,5 +175,12 @@ public class MainController : MonoBehaviour
       yield return null;
 
     Debug.Log("Animación terminada");
+  }
+
+  public void PuzzleComplete()
+  {
+    door = GameObject.Find("door");
+    Debug.Log("Puzzle complete");
+    door.GetComponent<DoorController>().OpenDoor();
   }
 }
