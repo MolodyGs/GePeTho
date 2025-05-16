@@ -30,8 +30,6 @@ public class Walk : MonoBehaviour
     {
       actualSpeed = Mathf.Min(actualSpeed + acceleration * Time.deltaTime, speed);
       rb.velocity = new Vector2(-actualSpeed, rb.velocity.y);
-      Debug.Log(rb.velocity);
-      Debug.Log(speed);
       animator.GetBool("jump");
       animator.SetBool("walking", true);
       spriteRenderer.flipX = true;
@@ -41,8 +39,6 @@ public class Walk : MonoBehaviour
     {
       actualSpeed = Mathf.Min(actualSpeed + acceleration * Time.deltaTime, speed);
       rb.velocity = new Vector2(actualSpeed, rb.velocity.y);
-      Debug.Log(rb.velocity);
-      Debug.Log(speed);
       animator.GetBool("jump");
       animator.SetBool("walking", true);
       spriteRenderer.flipX = false;
