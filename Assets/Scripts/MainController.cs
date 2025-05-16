@@ -11,15 +11,17 @@ public class MainController : MonoBehaviour
     Animator playerCloneAnimator;
     public string lastSceneId;
     public bool isTheMainMenu;
+    public GameObject door;
 
     async void Start()
     {
+        UnloadAllScenes();
         if (openScenesAdditive)
         {
-            await CargarEscenaAsync(lastSceneId + "_design");
-            await CargarEscenaAsync(lastSceneId + "_art");
-            await CargarEscenaAsync("scen_mainSound");
-            await CargarEscenaAsync("scen_mainMenu");
+            await LoadScene(lastSceneId + "_design");
+            await LoadScene(lastSceneId + "_art");
+            await LoadScene("scen_mainSound");
+            await LoadScene("scen_mainMenu");
         }
 
         if (isTheMainMenu)
@@ -32,57 +34,37 @@ public class MainController : MonoBehaviour
             playerClone = GameObject.Find("gepetho_clone");
             playerCloneAnimator = playerClone.GetComponent<Animator>();
         }
+
+        door = GameObject.Find("door");
     }
 
-    private async Task CargarEscenaAsync(string nombre)
+    private async Task LoadScene(string nombre)
     {
         AsyncOperation op = SceneManager.LoadSceneAsync(nombre, LoadSceneMode.Additive);
         while (!op.isDone)
             await Task.Yield();
     }
 
-    // private IEnumerator LoadingSceneAsync(string nombre, System.Action callback = null)
-    // {
-    //     Debug.Log("Cargando escena: " + nombre);
-    //     yield return new WaitForSeconds(0.5f);
-    //     {
-    //         AsyncOperation operacion = SceneManager.LoadSceneAsync(nombre, );
-    //         while (!operacion.isDone)
-    //         {
-    //             yield return null;
-    //         }
-    //         Debug.Log("Escena cargada. Continuar aquí.");
-    //     }
-    //     callback?.Invoke();
-    // }
-
-    public void OpenScene(string sceneId)
+    public async void OpenScene(string sceneId)
     {
-        // if (openScenesAdditive)
-        // {
         CloseScenes();
-        // SceneManager.LoadScene(sceneId, LoadSceneMode.Additive);
-        SceneManager.LoadScene(sceneId + "_design", LoadSceneMode.Additive);
-        // }
-        // else
-        // {
-        //     SceneManager.LoadScene(sceneId);
-        // }
+        Debug.Log("Abriendo escena: " + sceneId);
+        await LoadScene(sceneId + "_design");
+        await LoadScene(sceneId + "_art");
         lastSceneId = sceneId;
     }
 
     public void CloseScenes()
     {
-        if (openScenesAdditive)
-        {
-            SceneManager.UnloadSceneAsync(lastSceneId + "_design");
-            SceneManager.UnloadSceneAsync(lastSceneId + "_art");
-        }
+        Debug.Log("Cerrando escena: " + lastSceneId);
+        SceneManager.UnloadSceneAsync(lastSceneId + "_design");
+        SceneManager.UnloadSceneAsync(lastSceneId + "_art");
     }
 
     public void StartGame()
     {
         StartCoroutine(WakingUpAnimation());
+        door.GetComponent<DoorController>().OpenDoor();
     }
 
     IEnumerator WakingUpAnimation()
@@ -93,5 +75,20 @@ public class MainController : MonoBehaviour
         playerReference.SetActive(true);
         playerClone.SetActive(false);
         playerReference.GetComponent<Conditions>().blockMovement = false;
+    }
+
+    void UnloadAllScenes()
+    {
+        Scene activeScene = SceneManager.GetActiveScene();
+
+        for (int i = 0; i < SceneManager.sceneCount; i++)
+        {
+            Scene scene = SceneManager.GetSceneAt(i);
+
+            if (scene != activeScene && scene.isLoaded)
+            {
+                SceneManager.UnloadSceneAsync(scene);
+            }
+        }
     }
 }
