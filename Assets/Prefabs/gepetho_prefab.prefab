@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 6149802474812899153}
   - component: {fileID: 9183920111842462045}
   m_Layer: 0
-  m_Name: gepetho_reference
+  m_Name: gepetho_prefab
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

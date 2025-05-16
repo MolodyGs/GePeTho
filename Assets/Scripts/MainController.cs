@@ -15,6 +15,11 @@ public class MainController : MonoBehaviour
   public GameObject playerReference;
   Animator playerCloneAnimator;
 
+  // Player variables
+  public GameObject playerPrefab;
+  public GameObject playerPositionReference;
+  public GameObject player;
+
   // Variables for loading scenes 
   public string lastSceneId;
 
@@ -26,6 +31,8 @@ public class MainController : MonoBehaviour
   public GameObject mainCameraPivot;
   public GameObject mainCameraBlackBackground;
   public Animator mainCameraBlackBackgroundAnimator;
+
+
 
   async void Start()
   {
@@ -49,6 +56,9 @@ public class MainController : MonoBehaviour
 
       await LoadScene("scen_mainMenu");
     }
+
+    GetPlayerPositionReference();
+    player = Instantiate(playerPrefab, playerPositionReference.transform.position, Quaternion.identity);
 
     LoadCamera(lastSceneId);
 
@@ -92,7 +102,7 @@ public class MainController : MonoBehaviour
     Debug.Log("Scene " + nombre + " closed");
   }
 
-  private async void CloseScenes(string scene)
+  private async Task CloseScenes(string scene)
   {
     await CloseScene(scene + "_design");
     await CloseScene(scene + "_art");
@@ -100,6 +110,10 @@ public class MainController : MonoBehaviour
 
   public async void OpenScene(string sceneId)
   {
+
+    // block the player movement
+    player.GetComponent<Conditions>().blockMovement = true;
+
     // active a black background
     mainCameraBlackBackgroundAnimator.SetBool("fade", true);
 
@@ -107,7 +121,7 @@ public class MainController : MonoBehaviour
     await LoadScene(sceneId + "_design");
     await LoadScene(sceneId + "_art");
 
-    StartCoroutine(Wait(() =>
+    StartCoroutine(Wait(async () =>
     {
       // change the camera position by the camera reference
       LoadCamera(sceneId);
@@ -116,13 +130,19 @@ public class MainController : MonoBehaviour
       mainCameraBlackBackgroundAnimator.SetBool("fade", false);
 
       // closing current scenes
-      CloseScenes(lastSceneId);
+      await CloseScenes(lastSceneId);
 
       // get door reference
       door = GameObject.Find("door");
 
       // get the scene reference
       lastSceneId = sceneId;
+
+      if (GetPlayerPositionReference())
+      {
+        player.transform.position = new Vector3(playerPositionReference.transform.position.x, playerPositionReference.transform.position.y, playerPositionReference.transform.position.z);
+        player.GetComponent<Conditions>().blockMovement = false;
+      }
     }));
   }
 
@@ -182,5 +202,20 @@ public class MainController : MonoBehaviour
     door = GameObject.Find("door");
     Debug.Log("Puzzle complete");
     door.GetComponent<DoorController>().OpenDoor();
+  }
+
+  private bool GetPlayerPositionReference()
+  {
+    Debug.Log("Loading player position...");
+    playerPositionReference = GameObject.Find("player_position_reference");
+    Debug.Log("The player position found: " + playerPositionReference);
+    if (playerPositionReference == null)
+    {
+      Debug.LogError("Player position reference not found!!! " + lastSceneId);
+      return false;
+    }
+    Debug.Log("Player position loaded !!!");
+    playerPositionReference.GetComponent<SpriteRenderer>().enabled = false;
+    return true;
   }
 }

@@ -361,7 +361,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 100
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.105882354, g: 0.105882354, b: 0.12156863, a: 1}
+  m_Color: {r: 0.105882354, g: 0.105882354, b: 0.12156863, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -469,10 +469,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openScenesAdditive: 1
-  isTheMainMenu: 1
+  isTheMainMenu: 0
   playerClone: {fileID: 0}
   playerReference: {fileID: 0}
-  lastSceneId: scen_intro
+  playerPrefab: {fileID: 9034541695467395882, guid: 630ede40d7f22f2449460dad5fed01d3, type: 3}
+  playerPositionReference: {fileID: 0}
+  player: {fileID: 0}
+  lastSceneId: scen_level01
   door: {fileID: 0}
   cameraPivotReference: {fileID: 0}
   mainCameraPivot: {fileID: 1637684129}
