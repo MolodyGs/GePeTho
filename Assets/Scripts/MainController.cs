@@ -18,6 +18,8 @@ public class MainController : MonoBehaviour
         {
             await CargarEscenaAsync(lastSceneId + "_design");
             await CargarEscenaAsync(lastSceneId + "_art");
+            await CargarEscenaAsync("scen_mainSound");
+            await CargarEscenaAsync("scen_mainMenu");
         }
 
         if (isTheMainMenu)
