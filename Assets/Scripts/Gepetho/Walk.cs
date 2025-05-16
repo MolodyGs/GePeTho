@@ -11,10 +11,6 @@ public class Walk : MonoBehaviour
   public float acceleration = 0.1f;
   public float actualSpeed = 50f;
 
-  public AudioClip[] stepsSfx;
-  public AudioSource[] audioSources;
-  int audioSourceIndex = 0;
-
   void Start()
   {
     spriteRenderer = GetComponent<SpriteRenderer>();
@@ -60,35 +56,12 @@ public class Walk : MonoBehaviour
     }
   }
 
-  // IEnumerator PlayAnimation()
-  // {
-  //   float delay = 1f / 12;
-
-  //   while (true)
-  //   {
-  //     if (i >= sprites.Length) i = 0;
-  //     spriteRenderer.sprite = sprites[i];
-  //     i++;
-  //     yield return new WaitForSeconds(delay);
-  //   }
-  // }
-
   void StopAnimation()
   {
     if (animationCoroutine != null)
     {
       StopCoroutine(animationCoroutine);
       animationCoroutine = null;
-    }
-  }
-
-  public void StepSound()
-  {
-    audioSources[audioSourceIndex].PlayOneShot(stepsSfx[Random.Range(0, stepsSfx.Length)]);
-    audioSourceIndex++;
-    if(audioSourceIndex >= audioSources.Length)
-    {
-      audioSourceIndex = 0;
     }
   }
 }
