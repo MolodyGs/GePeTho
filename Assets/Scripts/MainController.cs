@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainController : MonoBehaviour
 {
-    public bool openScenesAdditive = false;
+    public bool openScenesAdditive;
     public GameObject playerClone;
     public GameObject playerReference;
     Animator playerCloneAnimator;
@@ -21,7 +21,6 @@ public class MainController : MonoBehaviour
             await LoadScene(lastSceneId + "_design");
             await LoadScene(lastSceneId + "_art");
             await LoadScene("scen_mainSound");
-            await LoadScene("scen_mainMenu");
         }
 
         if (isTheMainMenu)
@@ -33,6 +32,8 @@ public class MainController : MonoBehaviour
             // Gepetho Clone
             playerClone = GameObject.Find("gepetho_clone");
             playerCloneAnimator = playerClone.GetComponent<Animator>();
+
+            await LoadScene("scen_mainMenu");
         }
 
         door = GameObject.Find("door");
