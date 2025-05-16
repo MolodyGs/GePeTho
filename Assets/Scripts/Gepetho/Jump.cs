@@ -42,7 +42,13 @@ public class Jump : MonoBehaviour
   void FixedUpdate()
   {
 
-    if (GetComponent<Conditions>().blockMovement) return;
+    if (GetComponent<Conditions>().blockMovement)
+    {
+      animator.SetBool("jump", false);
+      animator.SetBool("falling", false);
+      animator.SetBool("grounded", true);
+      return;
+    }
 
     if (jump)
     {

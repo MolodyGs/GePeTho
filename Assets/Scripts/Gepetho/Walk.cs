@@ -24,16 +24,20 @@ public class Walk : MonoBehaviour
   void Update()
   {
 
-    if (GetComponent<Conditions>().blockMovement) return;
+    if (GetComponent<Conditions>().blockMovement)
+    {
+      animator.SetBool("walking", false);
+      return;
+    }
 
     if (Input.GetKey(KeyCode.A) && !Input.GetKeyDown(KeyCode.D))
-    {
-      actualSpeed = Mathf.Min(actualSpeed + acceleration * Time.deltaTime, speed);
-      rb.velocity = new Vector2(-actualSpeed, rb.velocity.y);
-      animator.GetBool("jump");
-      animator.SetBool("walking", true);
-      spriteRenderer.flipX = true;
-    }
+      {
+        actualSpeed = Mathf.Min(actualSpeed + acceleration * Time.deltaTime, speed);
+        rb.velocity = new Vector2(-actualSpeed, rb.velocity.y);
+        animator.GetBool("jump");
+        animator.SetBool("walking", true);
+        spriteRenderer.flipX = true;
+      }
 
     if (Input.GetKey(KeyCode.D) && !Input.GetKeyDown(KeyCode.A))
     {
