@@ -22,14 +22,14 @@ public class MainController : MonoBehaviour
   // Variables for loading scenes 
   public string lastSceneId;
 
-  // Level door reference
-  public GameObject door;
-
   // Main camera variables
   public GameObject cameraPivotReference;
   public GameObject mainCameraPivot;
   public GameObject mainCameraBlackBackground;
   public Animator mainCameraBlackBackgroundAnimator;
+
+  // Puzzle controller reference
+  public PuzzleController puzzleController;
 
   async void Start()
   {
@@ -42,6 +42,10 @@ public class MainController : MonoBehaviour
     {
       await LoadScene(lastSceneId + "_design");
       await LoadScene(lastSceneId + "_art");
+      StartCoroutine(Wait(lastSceneId, () =>
+      {
+        puzzleController.SetInitialState();
+      }));
     }
 
     if (GetPlayerPositionReference())
@@ -64,8 +68,6 @@ public class MainController : MonoBehaviour
     GetPlayerPositionReference();
 
     LoadCamera(lastSceneId);
-
-    door = GameObject.Find("door");
   }
 
   private void LoadCamera(string sceneId)
@@ -127,35 +129,36 @@ public class MainController : MonoBehaviour
     await LoadScene(sceneId + "_design");
     await LoadScene(sceneId + "_art");
 
-    StartCoroutine(Wait(async () =>
+    StartCoroutine(Wait(sceneId, async () =>
     {
-      // change the camera position by the camera reference
-      LoadCamera(sceneId);
-
-      // disable the black background
-      mainCameraBlackBackgroundAnimator.SetBool("fade", false);
 
       // closing current scenes
       await CloseScenes(lastSceneId);
-
-      // get door reference
-      door = GameObject.Find("door");
-
-      // get the scene reference
-      lastSceneId = sceneId;
 
       if (GetPlayerPositionReference())
       {
         player.transform.position = new Vector3(playerPositionReference.transform.position.x, playerPositionReference.transform.position.y, playerPositionReference.transform.position.z);
         player.GetComponent<Conditions>().blockMovement = false;
       }
-    }));
+
+      // change the camera position by the camera reference
+      LoadCamera(sceneId);
+
+      // disable the black background
+      mainCameraBlackBackgroundAnimator.SetBool("fade", false);
+
+      // get the scene reference
+      lastSceneId = sceneId;
+
+      // Set the default state of the puzzle controller
+      puzzleController.SetInitialState();
+    }, true));
   }
 
   public void StartGame()
   {
     StartCoroutine(WakingUpAnimation());
-    door.GetComponent<DoorController>().OpenDoor();
+    puzzleController.ForcePuzzleComplete();
   }
 
   IEnumerator WakingUpAnimation()
@@ -183,9 +186,42 @@ public class MainController : MonoBehaviour
     }
   }
 
-  IEnumerator Wait(Action action)
+  IEnumerator Wait(string sceneId, Action action, bool preWait = false)
   {
-    yield return new WaitForSeconds(2f);
+
+    if(preWait) yield return new WaitForSeconds(1.5f);
+
+    bool designSceneLoaded = false;
+    bool artSceneLoaded = false;
+    while (true)
+    {
+      yield return new WaitForSeconds(0.1f);
+
+      Debug.Log("Checking scene...");
+      for (int i = 0; i < SceneManager.sceneCount; i++)
+      {
+
+        if (SceneManager.GetSceneAt(i).name == sceneId + "_design")
+        {
+          designSceneLoaded = true;
+          continue;
+        }
+
+        if (SceneManager.GetSceneAt(i).name == sceneId + "_art")
+        {
+          artSceneLoaded = true;
+          continue;
+        }
+      }
+
+      if (designSceneLoaded && artSceneLoaded)
+      {
+        Debug.Log("Scenes " + sceneId + "_design and " + sceneId + "_art loaded");
+        break;
+      }
+      designSceneLoaded = false;
+      artSceneLoaded = false;
+    }
 
     action();
   }
@@ -203,13 +239,6 @@ public class MainController : MonoBehaviour
     Debug.Log("Animación terminada");
   }
 
-  public void PuzzleComplete()
-  {
-    door = GameObject.FindWithTag("puzzle_door");
-    Debug.Log("Puzzle complete");
-    door.GetComponent<DoorController>().OpenDoor();
-  }
-
   private bool GetPlayerPositionReference()
   {
     Debug.Log("Loading player position...");
@@ -224,7 +253,6 @@ public class MainController : MonoBehaviour
     playerPositionReference.GetComponent<SpriteRenderer>().enabled = false;
     return true;
   }
-
 
   bool IsSceneLoaded(string sceneName)
   {

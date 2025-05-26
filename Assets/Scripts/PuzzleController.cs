@@ -5,12 +5,7 @@ using UnityEngine;
 public class PuzzleController : MonoBehaviour
 {
   private List<PuzzleVariable> puzzleVariables = new();
-  public GameObject mainController;
-
-  public void Start()
-  {
-    mainController = GameObject.Find("MainController");
-  }
+  public DoorController door;
 
   public void SetVarible(string id, bool value)
   {
@@ -52,13 +47,81 @@ public class PuzzleController : MonoBehaviour
       }
     }
 
-    if (allTrue)
+    if (allTrue) PuzzleComplete();
+  }
+
+  void CleanVariables()
+  {
+    Debug.Log("Cleaning puzzle variables...");
+    puzzleVariables.Clear();
+  }
+
+  public void PuzzleComplete()
+  {
+    Debug.Log("All puzzle variables are true!");
+    Debug.Log("Puzzle complete");
+
+    // Clean up the puzzle variables
+    CleanVariables();
+
+    if (door == null)
     {
-      Debug.Log("All puzzle variables are true!");
-      mainController.GetComponent<MainController>().PuzzleComplete();
+      Debug.LogWarning("Puzzle door is null. Attempting to set door...");
+      if (SetDoor())
+      {
+        Debug.Log("Puzzle door set successfully.");
+      }
+      else
+      {
+        Debug.LogError("Failed to set puzzle door. Cannot open door.");
+        return;
+      }
+      return;
+    }
+
+    door.OpenDoor();
+    door = null;
+  }
+
+  // For testing purposes, force the puzzle to be complete
+  public void ForcePuzzleComplete()
+  {
+    Debug.Log("Forcing puzzle completion...");
+    PuzzleComplete();
+  }
+
+  bool SetDoor()
+  {
+    GameObject doorObj = GameObject.FindWithTag("puzzle_door");
+    if (doorObj == null)
+    {
+      Debug.LogError("Puzzle door not found! ");
+      return false;
+    }
+    else
+    {
+      door = doorObj.GetComponent<DoorController>();
+      if (door == null)
+      {
+        Debug.LogError("Puzzle door component not found on the object with tag 'puzzle_door'.");
+        return false;
+      }
+      else
+      {
+        Debug.Log("Puzzle door found: " + door.gameObject.name);
+        return true;
+      }
     }
   }
+
+  public void SetInitialState()
+  {
+    Debug.Log("Setting default state for puzzle variables...");
+    CleanVariables();
+    SetDoor();
+  }
 }
+
 
 struct PuzzleVariable
 {
