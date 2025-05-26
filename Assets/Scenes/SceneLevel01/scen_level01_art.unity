@@ -1282,8 +1282,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 1.589653, y: -4.1759014, z: 0}
-    m_Extent: {x: 66.73455, y: 58.211098, z: 0}
+    m_Center: {x: 1.5849495, y: -4.1849003, z: 0}
+    m_Extent: {x: 66.73476, y: 58.209297, z: 0}
   m_PointLightInnerAngle: 259.61
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.3951844
@@ -1483,7 +1483,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3618836701293576788, guid: 178a3a28646f4e6429d4bfbc8a8ae99a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1203.5
+      value: 1204
       objectReference: {fileID: 0}
     - target: {fileID: 3618836701293576788, guid: 178a3a28646f4e6429d4bfbc8a8ae99a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1549,7 +1549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3697921620910083955, guid: a1ef522812e99a34d9ecc76698e88219, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 859.5
+      value: 860
       objectReference: {fileID: 0}
     - target: {fileID: 3697921620910083955, guid: a1ef522812e99a34d9ecc76698e88219, type: 3}
       propertyPath: m_LocalPosition.y
