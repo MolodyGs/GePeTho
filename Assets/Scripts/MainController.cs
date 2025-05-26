@@ -36,7 +36,7 @@ public class MainController : MonoBehaviour
     UnloadAllScenes();
 
     await LoadScene("MAIN_SOUND");
-    await LoadScene("MAIN_MENU");
+    if (isTheMainMenu) await LoadScene("MAIN_MENU");
 
     if (openScenesAdditive)
     {
@@ -55,6 +55,7 @@ public class MainController : MonoBehaviour
 
       // Gepetho Clone
       playerClone = GameObject.Find("gepetho_clone");
+      Debug.Log("Player clone found: " + playerClone);
       playerCloneAnimator = playerClone.GetComponent<Animator>();
 
       await LoadScene("MAIN_MENU");
