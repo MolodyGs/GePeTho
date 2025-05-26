@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1751031686218562892}
   - component: {fileID: 6100237887247367348}
   m_Layer: 0
-  m_Name: general_art_deta_vfx_steam
+  m_Name: steam_Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

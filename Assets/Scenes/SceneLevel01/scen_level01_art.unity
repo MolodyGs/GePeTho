@@ -491,7 +491,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6739162758227889618, guid: 08d1fec111a949d4c89843e09830ee59, type: 3}
       propertyPath: m_Name
-      value: general_art_deta_vfx_steam (2)
+      value: steam_source
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -671,7 +671,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6739162758227889618, guid: 08d1fec111a949d4c89843e09830ee59, type: 3}
       propertyPath: m_Name
-      value: general_art_deta_vfx_steam (1)
+      value: steam_source
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1381,7 +1381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6739162758227889618, guid: 08d1fec111a949d4c89843e09830ee59, type: 3}
       propertyPath: m_Name
-      value: general_art_deta_vfx_steam
+      value: steam_source
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
