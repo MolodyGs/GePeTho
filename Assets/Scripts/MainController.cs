@@ -54,7 +54,7 @@ public class MainController : MonoBehaviour
       player.SetActive(false);
 
       // Gepetho Clone
-      playerClone = GameObject.Find("gepetho_clone");
+      playerClone = GameObject.Find("gepetho_sleep");
       Debug.Log("Player clone found: " + playerClone);
       playerCloneAnimator = playerClone.GetComponent<Animator>();
 

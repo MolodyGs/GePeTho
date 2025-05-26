@@ -195,7 +195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 133280264}
   m_Layer: 0
-  m_Name: BORDERS
+  m_Name: --->BORDERS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -441,7 +441,7 @@ GameObject:
   m_Component:
   - component: {fileID: 936293307}
   m_Layer: 0
-  m_Name: BUTTONS
+  m_Name: --->BUTTONS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -589,7 +589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1335683946}
   m_Layer: 0
-  m_Name: PLATFORM
+  m_Name: --->PLATFORM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
