@@ -12,7 +12,6 @@ public class MainController : MonoBehaviour
 
   // Introduction level variables
   public GameObject playerClone;
-  public GameObject playerReference;
   Animator playerCloneAnimator;
 
   // Player variables
@@ -32,33 +31,36 @@ public class MainController : MonoBehaviour
   public GameObject mainCameraBlackBackground;
   public Animator mainCameraBlackBackgroundAnimator;
 
-
-
   async void Start()
   {
     UnloadAllScenes();
+
+    await LoadScene("MAIN_SOUND");
+    await LoadScene("MAIN_MENU");
+
     if (openScenesAdditive)
     {
       await LoadScene(lastSceneId + "_design");
       await LoadScene(lastSceneId + "_art");
-      await LoadScene("scen_mainSound");
+    }
+
+    if (GetPlayerPositionReference())
+    {
+      player = Instantiate(playerPrefab, playerPositionReference.transform.position, Quaternion.identity);
     }
 
     if (isTheMainMenu)
     {
-      // Gepetho Reference
-      playerReference = GameObject.Find("gepetho_reference");
-      playerReference.SetActive(false);
+      player.SetActive(false);
 
       // Gepetho Clone
       playerClone = GameObject.Find("gepetho_clone");
       playerCloneAnimator = playerClone.GetComponent<Animator>();
 
-      await LoadScene("scen_mainMenu");
+      await LoadScene("MAIN_MENU");
     }
 
     GetPlayerPositionReference();
-    player = Instantiate(playerPrefab, playerPositionReference.transform.position, Quaternion.identity);
 
     LoadCamera(lastSceneId);
 
@@ -67,7 +69,7 @@ public class MainController : MonoBehaviour
 
   private void LoadCamera(string sceneId)
   {
-    cameraPivotReference = GameObject.Find(sceneId + "_cameraReference");
+    cameraPivotReference = GameObject.Find(sceneId + "_camera_reference");
 
     if (cameraPivotReference == null)
     {
@@ -82,6 +84,9 @@ public class MainController : MonoBehaviour
 
   private async Task LoadScene(string nombre)
   {
+    // Verify if the scene is already loaded
+    if (IsSceneLoaded(nombre)) return;
+
     AsyncOperation op = SceneManager.LoadSceneAsync(nombre, LoadSceneMode.Additive);
     while (!op.isDone)
     {
@@ -157,9 +162,9 @@ public class MainController : MonoBehaviour
     yield return new WaitForSeconds(2f);
     playerCloneAnimator.SetBool("isWaking", true);
     yield return new WaitForSeconds(1.666f);
-    playerReference.SetActive(true);
+    player.SetActive(true);
     playerClone.SetActive(false);
-    playerReference.GetComponent<Conditions>().blockMovement = false;
+    player.GetComponent<Conditions>().blockMovement = false;
   }
 
   void UnloadAllScenes()
@@ -199,7 +204,7 @@ public class MainController : MonoBehaviour
 
   public void PuzzleComplete()
   {
-    door = GameObject.Find("door");
+    door = GameObject.FindWithTag("puzzle_door");
     Debug.Log("Puzzle complete");
     door.GetComponent<DoorController>().OpenDoor();
   }
@@ -217,5 +222,19 @@ public class MainController : MonoBehaviour
     Debug.Log("Player position loaded !!!");
     playerPositionReference.GetComponent<SpriteRenderer>().enabled = false;
     return true;
+  }
+
+
+  bool IsSceneLoaded(string sceneName)
+  {
+    for (int i = 0; i < SceneManager.sceneCount; i++)
+    {
+      Scene scene = SceneManager.GetSceneAt(i);
+      if (scene.name == sceneName && scene.isLoaded)
+      {
+        return true;
+      }
+    }
+    return false;
   }
 }
