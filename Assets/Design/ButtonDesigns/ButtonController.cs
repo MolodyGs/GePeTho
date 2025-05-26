@@ -10,7 +10,7 @@ public class ButtonController : MonoBehaviour
 
   void Start()
   {
-    puzzleController = GameObject.Find("PuzzleController").GetComponent<PuzzleController>();
+    puzzleController = GameObject.FindWithTag("puzzle_controller").GetComponent<PuzzleController>();
     puzzleController.SetVarible(buttonId, false);
     animator = GetComponent<Animator>();
   }
