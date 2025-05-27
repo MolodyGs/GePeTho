@@ -5,7 +5,6 @@ using UnityEngine;
 public class ButtonController : MonoBehaviour
 {
   public string buttonId;
-  PuzzleController puzzleController;
   Animator animator;
 
   void Start()
@@ -16,7 +15,7 @@ public class ButtonController : MonoBehaviour
 
   void OnTriggerEnter2D(Collider2D collision)
   {
-    puzzleController.UpdateVariable(buttonId, true);
+    PuzzleController.Instance.UpdateVariable(buttonId, true);
     animator.SetBool("active", true);
   }
 }
