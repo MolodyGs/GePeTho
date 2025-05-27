@@ -66,7 +66,6 @@ public class Jump : MonoBehaviour
         isGrounded = false;
         animator.SetBool("falling", true);
         animator.SetBool("grounded", false);
-        // Debug.Log("Falling");
       }
     }
     else if (currentVelocityY == 0)
@@ -76,7 +75,6 @@ public class Jump : MonoBehaviour
       animator.SetBool("falling", false);
       animator.SetBool("jump", false);
       animator.SetBool("grounded", true);
-      // Debug.Log("Grounded");
     }
 
     if (!isGrounded && !Input.GetKey(KeyCode.Space) && !gravityModified)
@@ -97,8 +95,8 @@ public class Jump : MonoBehaviour
       animator.SetBool("falling", true);
       animator.SetBool("jump", true);
       animator.SetBool("grounded", false);
+      isGrounded = false;
     }
-
 
     lastVelocityY = currentVelocityY;
   }
