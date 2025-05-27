@@ -9,6 +9,7 @@ public class MainMenuController : MonoBehaviour
   private void Start()
   {
     PlayerController.Instance.GetPlayer().GetComponent<Animator>().SetBool("sleeping", true);
+    PlayerController.Instance.SetPlayerLightOff();
   }
 
   public void StartGame()
@@ -18,6 +19,7 @@ public class MainMenuController : MonoBehaviour
     StartCoroutine(WakingUpAnimation());
     PuzzleController.Instance.ForcePuzzleComplete();
     canvas.SetActive(false);
+    PlayerController.Instance.SetPlayerLightOn();
   }
 
   public void ShowCredits()

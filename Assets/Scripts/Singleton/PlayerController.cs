@@ -91,4 +91,14 @@ public class PlayerController : MonoBehaviour
       throw new System.Exception("Player not instantiated!");
     }
   }
+
+  public void SetPlayerLightOn()
+  {
+    player.GetComponent<LightController>().SetLightOn();
+  }
+
+  public void SetPlayerLightOff()
+  {
+    player.GetComponent<LightController>().SetLightOff();
+  }
 }
