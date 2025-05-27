@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: particle_animation
+    m_Hash: 821788224
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: general_art_vfx_particles_exp01_0
+      m_Hash: 323800606
+      m_Sprite: {fileID: 542735782, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 542735782, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+    - m_Name: general_art_vfx_particles_exp01_1
+      m_Hash: 608960136
+      m_Sprite: {fileID: -2069732731, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -2069732731, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+    - m_Name: general_art_vfx_particles_exp01_2
+      m_Hash: 1027780402
+      m_Sprite: {fileID: -393520285, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -393520285, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+    - m_Name: general_art_vfx_particles_exp01_3
+      m_Hash: 172335012
+      m_Sprite: {fileID: -937569617, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -937569617, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+    - m_Name: general_art_vfx_particles_exp01_4
+      m_Hash: 337709575
+      m_Sprite: {fileID: 1061303348, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1061303348, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+    - m_Name: general_art_vfx_particles_exp01_5
+      m_Hash: 589707921
+      m_Sprite: {fileID: -1780549868, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1780549868, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+    - m_Name: general_art_vfx_particles_exp01_6
+      m_Hash: 976186155
+      m_Sprite: {fileID: 1801964016, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1801964016, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+    - m_Name: general_art_vfx_particles_exp01_7
+      m_Hash: 220748733
+      m_Sprite: {fileID: -1147425574, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1147425574, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+    - m_Name: general_art_vfx_particles_exp01_8
+      m_Hash: 496453164
+      m_Sprite: {fileID: 1804716800, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1804716800, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+    - m_Name: general_art_vfx_particles_exp01_9
+      m_Hash: 714110650
+      m_Sprite: {fileID: -876249119, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -876249119, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+    - m_Name: general_art_vfx_particles_exp01_10
+      m_Hash: 396140493
+      m_Sprite: {fileID: -1779759911, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1779759911, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+    - m_Name: general_art_vfx_particles_exp01_11
+      m_Hash: 547073883
+      m_Sprite: {fileID: -902056538, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -902056538, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+    - m_Name: general_art_vfx_particles_exp01_12
+      m_Hash: 965934817
+      m_Sprite: {fileID: -112061393, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -112061393, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+    - m_Name: general_art_vfx_particles_exp01_13
+      m_Hash: 244698743
+      m_Sprite: {fileID: -714228817, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -714228817, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+    - m_Name: general_art_vfx_particles_exp01_14
+      m_Hash: 284253140
+      m_Sprite: {fileID: -1511088450, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1511088450, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+    - m_Name: general_art_vfx_particles_exp01_15
+      m_Hash: 670460738
+      m_Sprite: {fileID: 1469904799, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1469904799, guid: 2d11d315835298c48b47514ddb72bd57, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 16
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 638839106590769428
+  m_Version: 1
