@@ -1,11 +1,25 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class PuzzleController : MonoBehaviour
 {
+  public static PuzzleController Instance { get; private set; }
+
   private List<PuzzleVariable> puzzleVariables = new();
   public DoorController door;
+
+  private void Awake()
+  {
+    if (Instance != null && Instance != this)
+    {
+      Destroy(gameObject);
+      return;
+    }
+
+    Instance = this;
+    DontDestroyOnLoad(gameObject);
+  }
 
   public void SetVarible(string id, bool value)
   {
@@ -56,7 +70,7 @@ public class PuzzleController : MonoBehaviour
     puzzleVariables.Clear();
   }
 
-  public void PuzzleComplete()
+  public async void PuzzleComplete()
   {
     Debug.Log("All puzzle variables are true!");
     Debug.Log("Puzzle complete");
@@ -67,7 +81,7 @@ public class PuzzleController : MonoBehaviour
     if (door == null)
     {
       Debug.LogWarning("Puzzle door is null. Attempting to set door...");
-      if (SetDoor())
+      if (await SetDoor())
       {
         Debug.Log("Puzzle door set successfully.");
       }
@@ -90,35 +104,27 @@ public class PuzzleController : MonoBehaviour
     PuzzleComplete();
   }
 
-  bool SetDoor()
+  async Task<bool> SetDoor()
   {
-    GameObject doorObj = GameObject.FindWithTag("puzzle_door");
-    if (doorObj == null)
+    try
     {
-      Debug.LogError("Puzzle door not found! ");
-      return false;
+      await SceneController.Instance.WaitUntilLevelIsLoaded();
+      LevelVariables levelVariables = await SceneController.Instance.GetLevelVariables();
+      door = levelVariables.door;
+      return true;
     }
-    else
+    catch (System.Exception e)
     {
-      door = doorObj.GetComponent<DoorController>();
-      if (door == null)
-      {
-        Debug.LogError("Puzzle door component not found on the object with tag 'puzzle_door'.");
-        return false;
-      }
-      else
-      {
-        Debug.Log("Puzzle door found: " + door.gameObject.name);
-        return true;
-      }
+      Debug.LogError("<color=red>Error finding puzzle door: </color>" + e.Message);
+      return false;
     }
   }
 
-  public void SetInitialState()
+  public async void InitialState()
   {
     Debug.Log("Setting default state for puzzle variables...");
     CleanVariables();
-    SetDoor();
+    await SetDoor();
   }
 }
 

@@ -7,6 +7,7 @@ TagManager:
   - camera_reference
   - puzzle_controller
   - puzzle_door
+  - player_position_reference
   layers:
   - Default
   - TransparentFX

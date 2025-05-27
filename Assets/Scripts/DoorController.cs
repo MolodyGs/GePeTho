@@ -4,32 +4,32 @@ using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
-    MainController mainController;
-    Animator animator;
-    public string sceneId;
-    public bool isOpened = false;
+  MainController mainController;
+  Animator animator;
+  public string sceneId;
+  public bool isOpened = false;
 
-    // Start is called before the first frame update
-    void Start()
+  // Start is called before the first frame update
+  void Start()
+  {
+    mainController = GameObject.Find("MainController").GetComponent<MainController>();
+    animator = GetComponent<Animator>();
+    animator.SetBool("isOpen", isOpened);
+  }
+
+  // Uncomment the following method to enable collision detectio
+  async void OnTriggerEnter2D(Collider2D collider)
+  {
+    if (collider.gameObject.CompareTag("Player") && isOpened)
     {
-        mainController = GameObject.Find("MainController").GetComponent<MainController>();
-        animator = GetComponent<Animator>();
-        animator.SetBool("isOpen", isOpened);
+      await SceneController.Instance.OpenLevel(sceneId);
     }
+  }
 
-    // Uncomment the following method to enable collision detectio
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.gameObject.CompareTag("Player") && isOpened)
-        {
-            mainController.OpenScene(sceneId);
-        }
-    }
-
-    public void OpenDoor()
-    {
-        isOpened = true;
-        animator.SetBool("isOpen", true);
-        Debug.Log("Door opened");
-    } 
+  public void OpenDoor()
+  {
+    isOpened = true;
+    animator.SetBool("isOpen", true);
+    Debug.Log("Door opened");
+  }
 }
